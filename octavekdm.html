@@ -1,0 +1,549 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<!-- Mirrored from www.sourceminer.org/experimentalStudies.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 13 Nov 2014 13:57:25 GMT -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Octave KDM</title>
+<link rel="stylesheet" href="./octavekdm/styles.css" type="text/css" />
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-18856574-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+</head>
+
+<body>
+	<img src="images/body-bgL.jpg"  align="left" />
+	<div id="wrapper">
+	  <div id="header">
+    <h2>Octave KDM</h2>
+			<div class="tagline"><p>A Multiple View Interactive Environment for Software Visualization</p></div>
+		</div>
+		<div id="body" class="clear">
+			<div id="sidebar" class="column-left">
+				<ul>
+                	<li>
+						<h4>&nbsp;</h4>
+                        <ul class="blocklist">
+                            <li><a href="index-2.html">Home</a></li>
+                            <!--<li><a href="people.html">People</a></li>-->
+                            <li><a href="installSourceMiner.html">Installing SourceMiner</a></li>
+							<li><a href="http://eepurl.com/b60oD">Subscribe to our e-mail newsletter</a></li>
+                            <li><a href="screenshots.html">Screenshots</a></li>
+                            <li><a href="videos.html">Videos: SourceMiner in Action</a></li>
+                            <li ><a href="#">Experimental Studies</a></li>
+                            <li><a href="collaborativeVersion.html">Collaborative Version</a></li>
+                            <li class="selected-item"><a href="octavekdm.html">OctaveKDM</a></li>
+                            <li><a href="octminer.html">OctMiner for MATLAB and Octave</a></li>
+			    <li><a href="slrcloud.html">Cloud Computing</a></li>
+                            <li><a href="projects.html">Ongoing Projects</a></li>
+                            <li><a href="publications.html">Publications</a></li>   
+                            <li><a href="contact.html">Contact</a></li>
+                        </ul>
+
+					</li>	
+					
+					
+				</ul>
+			</div>
+			<div id="content" class="column-right">
+                                <img align="right" src="https://counter8.fcs.ovh/private/webcontadores.php?c=ry5pngr2psrpq9ha1gzu8rj82f8kb8uf" border="0" title="" alt="contador de visitas"/>
+				<!-- CONTENT -->
+                                <br/> <br/>
+				<h2>OctaveKDM: A Multiple View Environment for MATLAB and GNU/Octave	using the Knowledge Discovery Metamodel (KDM)</h2>
+ <p>&nbsp;</p>
+                                <p>The infrastructure implemented by our research group to support the analysis of MATLAB and Octave programs is available at <a href="lakefront.cs.uwm.edu:8080/octave-kdm-visualization/index.html">OctaveKDM</a></p>
+				<p> Program comprehension plays an important role in Software Engineering. In fact, many of the software lifecycle activities depend on program comprehension. Despite the importance of MATLAB and Octave programing languages in the Engineering and Statistical communities, little attention has been paid to the conception, implementation and characterization of tools and techniques for the comprehension of programs written in these languages. Considering this scenario, this paper presents a Multiple View Interactive Environment (MVIE) called OctaveKDM tailored to support the comprehension of programs in the aforementioned languages. OctaveKDM provides a set of coordinated visual metaphors that can be adjusted in accordance with programmers needs.</p>
+                                <p> OctaveKDM is designed as a web application, developed under a service-oriented architecture, extremely flexible and robust. The data extracted from source codes is stored in a NoSQL database, structured under the Knowledge Discovery Metamodel (KDM). These are the differences of this environment compared to OctMiner, since OctMiner was designed as an Eclipse plugin and the data used to load the views are extracted from the Abstract Syntaic Tree (AST) of the target program, which every time needs to be mounted.</p>
+                                <p> In order to generate the KDM of a particular MATLAB/Octave program, it was necessary to develop a secondary Parser that mounts the AST of the program source code and a main Parser that, from the mounted AST, generates the corresponding KDM, as shown in Figure 1.</p>
+                                <p>Instead of developing this secondary parser that generates AST from MATLAB/Octave programs, we could use one that already exists available, but only one parser was found that would meet this need without limitation. Corresponds to the parser available in the GNU Octave source code, called parse-tree. This parser was developed as a library in C language. However, to use it, some modifications would be necessary for it to contemplate the MATLAB language, in addition to Octave, for which it was conceived. The problem of this is that this parser does not have documentation and its source code is difficult to understand, as can be seen in Figure 2.</p>
+
+                                <table>
+                                    <tbody>
+                                        <tr> 
+                                            <td align="center">
+                                                <a href="./octavekdm/images/parser.png">
+                                                    <img src="./octavekdm/images/parser.png" border="0" width="1281" height="272"/>
+                                                </a>
+				            </td>
+                 			</tr>
+                                    </tbody>
+                                </table>
+                                <center>Figure 1 - Parser from Source Code to respective KDM</center><br>
+                                
+                                <table>
+                                    <tbody>
+                                        <tr> 
+                                            <td align="center">
+                                                <a href="./octavekdm/images/GNUParseTreeMethod.png">
+                                                    <img src="./octavekdm/images/GNUParseTreeMethod.png" border="0" width="709" height="181"/>
+                                                </a>
+				            </td>
+                 			</tr>
+                                    </tbody>
+                                </table>
+                                <center>Figure 2 - Source Code sample of a parse-tree library method</center><br>
+
+                      <h3>Knowledge Discovery Metamodel (KDM)</h3>
+				
+		      <p>In the KDM metamodel, we identify twelve packages with one or more class diagrams describing elements aiming at representing some part of the system under analysis. These elements will be written to an XMI file to represent the target system. The Figure 3 represents the KDM package structure.</p>
+                      <p>The packages are defined in layers as conveyed in Figure 3. Packages from top layers depend on the ones from lower layers. For this reason, the Core package is the main package upon which all the others provide their respective services. In the Parser implementation described here, we use elements from the five lower packages: Core, kdm, Source, Code and Action. The Figure 4 show the hierarchy of the elements used to represent the source code of Matlab/Octave programs in this work.</p>
+
+                                <table>
+                                    <tbody>
+                                        <tr> 
+                                            <td align="center">
+                                                <a href="./octavekdm/images/kdm-package.png">
+                                                    <img src="./octavekdm/images/kdm-package.png" border="0" width="485" height="268"/>
+                                                </a>
+				            </td>
+                 			</tr>
+                                    </tbody>
+                                </table>
+                                <center>Figure 3 - Structure of KDM Packages</center><br>
+
+                                <table>
+                                    <tbody>
+                                        <tr> 
+                                            <td align="center">
+                                                <a href="./octavekdm/images/hierarquiaKDM.png">
+                                                    <img src="./octavekdm/images/hierarquiaKDM.png" border="0" width="487" height="454"/>
+                                                </a>
+				            </td>
+                 			</tr>
+                                    </tbody>
+                                </table>
+                                <center>Figure 4 - Hierarchical structure of the KDM objects</center><br>
+
+                      <h3>The Parser Implementation</h3>
+                      <p>To convert MATLAB/Octave Programs to Knowledge Discovery Metamodel (KDM) instances, we implemented the following libraries: ASTOctave, OctaveKDMStructure, ASTOctaveToKDM, OctaveKDMToXMI and  OctaveKDMToJSON. ASTOctave includes a parser for reading a MATLAB or Octave file and generating the corresponding AST. OctaveKDMStructure represents the KDM structure of MATLAB and Octave applications. The KDM elements used to represent MATLAB/Octave programs, with their respective hierarchy, can be view in figure 4. ASTOctaveToKDM is responsible for scanning all the source files from an Octave or Matlab project and using library ASTOctave to create the AST for each, as well as creating the project's KDM metamodel. The OctaveKDMToXMI and OctaveKDMToJSON libraries scan the data stored under the project's KDM structure and respectively generate the XMI and JSON files of that structure. The figure 5 show the main parser flow and Figure 6 show the class diagram of the proposed KDM structure. This structure is implemented in the OctaveKDMStructure library.</p>
+
+<p>The KDM documentation proposes that the structure representation be described in an XMI file. Nevertheless we chose to create an similar representation in the JSON file, in order to allow inclusion of the data in the NoSQL database. This will facilitate information retrieval from the stored data for possible analysis. This was the motivation for developing the OctaveKDMToJSON library.</p>
+               
+                                <table>
+                                    <tbody>
+                                        <tr> 
+                                            <td align="center">
+                                                <a href="./octavekdm/images/KDMGenerationFlow.png">
+                                                    <img src="./octavekdm/images/KDMGenerationFlow.png" border="0" width="678" height="854"/>
+                                                </a>
+				            </td>
+                 			</tr>
+                                    </tbody>
+                                </table>
+                                <center>Figure 5 - Steps to Build KDM Instances Using the ASTOctaveToKDM Library</center><br>
+
+                                <table>
+                                    <tbody>
+                                        <tr> 
+                                            <td align="center">
+                                                <a href="./octavekdm/images/sequenceDiagram.png">
+                                                    <img src="./octavekdm/images/sequenceDiagram.png" border="0" width="1080" height="427"/>
+                                                </a>
+				            </td>
+                 			</tr>
+                                    </tbody>
+                                </table>
+                                <center>Figure 6 - Class Diagram of the Proposed KDM Structure</center><br>
+
+                      <h3>Infrastructure to Support the Visual Analysis</h3>
+
+                      <p>The infrastructure implemented by our research group to support the analysis of MATLAB and Octave programs is available at <a href="lakefront.cs.uwm.edu:8080/octave-kdm-visualization/index.html">OctaveKDM</a></p>
+
+                      <p>The architecture used in the infrastructure is based on the client/server model through the use of the Service-oriented architecture(SOA). The figure 7 show the implemented architecture. The primary motivation for this architecture relates to its flexibility. The SOA architecture was created with the purpose of integrating the diverse systems within companies with low cost and little time spent. It allows new products to be developed without the need for changes in existing systems. The technologies used in the infrastructure are shown in figure 8. They comprise the Apache Tomcat web container and the CouchDB NoSQL database management system. The REST Java API was used to create the services, jQuery Ajax, and D3.js as a Java Script library to manipulate DOM objects based on JSON data. These technologies are used to implement parts B, C, D, and E of the visualization pipeline shown in figure 7.</p>
+
+                                <table>
+                                    <tbody>
+                                        <tr> 
+                                            <td align="center">
+                                                <a href="./octavekdm/images/architecture.png">
+                                                    <img src="./octavekdm/images/architecture.png" border="0" width="955" height="282"/>
+                                                </a>
+				            </td>
+                 			</tr>
+                                    </tbody>
+                                </table>
+                                <center>Figure 7 - Infrastructure to Support the Visual Analysis of MATLAB/Octave Programs</center><br>
+
+                                <table>
+                                    <tbody>
+                                        <tr> 
+                                            <td align="center">
+                                                <a href="./octavekdm/images/tecnologiasArquitetura.png">
+                                                    <img src="./octavekdm/images/tecnologiasArquitetura.png" border="0" width="332" height="264"/>
+                                                </a>
+				            </td>
+                 			</tr>
+                                    </tbody>
+                                </table>
+                                <center>Figure 8 - Technologies Used in Proposed Infrastructure</center><br>
+
+                      <p>The part A of the figure 7 represents the source code repository used to fetch source codes from the MATLAB/Octave programs. The visualization environment is limited to repositories that use Git technology. Part B represents the NoSQL CouchDB database, used to store the source code information in the KDM structure. Part C represents the database Views created within the CouchDB to get the necessary information in the format to load the visual metaphors developed through the use of the D3js library. Part D represents the Server side of the visualization environment while part E represents the Client side. The Server has classes developed as services in the Java language using REST technology. These services are responsible for calling the views implemented in CouchDB and returning the result to the Client. There is also a service on the Server to import a MATLAB/Octave project from the repository into the visualization environment. It is this service that calls the ASTOctaveToKDM library to create the project's KDM, and then save it to the database. In the Client, HTML 5 pages are implemented using Java Script, CSS 3, and the Java Script D3JS library to display the available visual metaphors. Part F represents the devices that can be used by the user in the use of the visualization environment.</p>
+
+                      <p>Each KDM element used to represent a MATLAB/Octave project has been transformed into a Json document to be saved in CouchDB. The hierarchical relationship between these elements was maintained in the Json documents through the idParent attribute, as can be seen in Figures 9, 10, 11, 12 and 13. These elements are represented in the part B of the figure 7.</p>
+
+                                <table>
+                                    <tbody>
+                                        <tr> 
+                                            <td align="center">
+                                                <a href="./octavekdm/images/documentoSegment.png">
+                                                    <img src="./octavekdm/images/documentoSegment.png" border="0" width="216" height="84"/>
+                                                </a>
+				            </td>
+                 			</tr>
+                                    </tbody>
+                                </table>
+                                <center>Figure 9 - A JSON Document Sample Representing the KDMSegment Object</center><br>
+
+                                <table>
+                                    <tbody>
+                                        <tr> 
+                                            <td align="center">
+                                                <a href="./octavekdm/images/callableJson.png">
+                                                    <img src="./octavekdm/images/callableJson.png" border="0" width="376" height="372"/>
+                                                </a>
+				            </td>
+                 			</tr>
+                                    </tbody>
+                                </table>
+                                <center>Figure 10 - Data Structure of a JSON File Representing a KDM CallableUnit Element</center><br>
+
+                                <table>
+                                    <tbody>
+                                        <tr> 
+                                            <td align="center">
+                                                <a href="./octavekdm/images/blockJson.png">
+                                                    <img src="./octavekdm/images/blockJson.png" border="0" width="345" height="118"/>
+                                                </a>
+				            </td>
+                 			</tr>
+                                    </tbody>
+                                </table>
+                                <center>Figure 11 - Data Structure of a JSON File Representing a KDM CompilationUnit Element</center><br>
+
+                                <table>
+                                    <tbody>
+                                        <tr> 
+                                            <td align="center">
+                                                <a href="./octavekdm/images/compilationJson.png">
+                                                    <img src="./octavekdm/images/compilationJson.png" border="0" width="382" height="161"/>
+                                                </a>
+				            </td>
+                 			</tr>
+                                    </tbody>
+                                </table>
+                                <center>Figure 12 - Data Structure of a JSON File Representing a KDM BlockUnit Element</center><br>
+
+                                <table>
+                                    <tbody>
+                                        <tr> 
+                                            <td align="center">
+                                                <a href="./octavekdm/images/codeModelJson.png">
+                                                    <img src="./octavekdm/images/codeModelJson.png" border="0" width="344" height="122"/>
+                                                </a>
+				            </td>
+                 			</tr>
+                                    </tbody>
+                                </table>
+                                <center>Figure 13 - Data Structure of a JSON File Representing a KDM CodeModel Element</center><br>
+
+                      <p>To load the visual metaphors of the visualization environment, it's need to get the data from CouchDB through Views developed as Java Script functions in the database. These views transform the original data into a Json document in the format expected by the visual metaphor. This transformation is represented in part C of figure 7. Figures 14 and 15, respectively, show an example of a CouchDB view and the result of its execution.</p>
+
+
+                                <table>
+                                    <tbody>
+                                        <tr> 
+                                            <td align="center">
+                                                <a href="./octavekdm/images/viewCouchDB.png">
+                                                    <img src="./octavekdm/images/viewCouchDB.png" border="0" width="233" height="75"/>
+                                                </a>
+				            </td>
+                 			</tr>
+                                    </tbody>
+                                </table>
+                                <center>Figure 14 - CouchDB View Sample</center><br>
+
+                                <table>
+                                    <tbody>
+                                        <tr> 
+                                            <td align="center">
+                                                <a href="./octavekdm/images/resultadoView.png">
+                                                    <img src="./octavekdm/images/resultadoView.png" border="0" width="1071" height="409"/>
+                                                </a>
+				            </td>
+                 			</tr>
+                                    </tbody>
+                                </table>
+                                <center>Figure 15 - Result of the view execution</center><br>
+
+                      <p>For the visualization environment to connect to the database, it's need to configure it  through a file in the key/value format. This file is used by Java library Lightcouch. This library corresponds to a Java Application Programming Interface (API) for communication with the CouchDB database. The figure 16 show a sample these configuration file</p>
+
+                                <table>
+                                    <tbody>
+                                        <tr> 
+                                            <td align="center">
+                                                <a href="./octavekdm/images/configuracaoBanco.png">
+                                                    <img src="./octavekdm/images/configuracaoBanco.png" border="0" width="250" height="100"/>
+                                                </a>
+				            </td>
+                 			</tr>
+                                    </tbody>
+                                </table>
+                                <center>Figure 16 - Result of the view execution</center><br>
+
+                      <h3>Proposed Strategy to Analyse MATLAB/Octave Programs</h3>
+                      <p> The purpose of the infrastructure proposed in figure 7 is to support the source code analysis of MATLAB and Octave programs. In this work, an exploratory study of the infrastructures was made based on the strategy of research in levels defined in figure 17.</p>
+
+                                <table>
+                                    <tbody>
+                                        <tr> 
+                                            <td align="center">
+                                                <a href="./octavekdm/images/strategy.png">
+                                                    <img src="./octavekdm/images/strategy.png" border="0" width="342" height="484"/>
+                                                </a>
+				            </td>
+                 			</tr>
+                                    </tbody>
+                                </table>
+                                <center>Figure 17 - Proposed Strategy to Analyse MATLAB/Octave Programs</center><br>
+
+                      <p>Choice for this exploratory study was motivated by the frequent observation, in literature reports, of the occurrence of modules of an application that concentrate a large number of functionalities and consequently a considerable (and excessive) amount of information. Modules in these situations tend to be called and/or referenced by many other modules, in many points in the system. In object orientation, this anomaly is known as God Class. Such modules are cause significant damage to the maintainability of the application and even warp the normal development process. In procedural programming, this anomaly is cause for similar problems and are likewise a threat to the modularity of the application, exacerbating coupling between modules and thus increase maintenance efforts and costs.</p>
+
+                      <p>The analysis strategy proposed in this section aims to guide the understanding of MATLAB/Octave programs, defining step by step in an attempt to discover in these projects source code files that have similar characteristics to the God Class symptom observed in Object Oriented systems.</p>
+
+                      <h3>USING THE VISUAL APPROACH TO ANALYZE MATLAB/OCTAVE PROGRAMS</h3>
+
+                      <p>To execute the proposed exploratory study, three visual metaphors of the treemap type and two of the chord type were developed. The treemap visual metaphor is capable of representing large volumes of hierarchical data through recursively nested rectangles representing domain-relevant entities also known as real attributes. The chord view is capable of displaying a set of arcs forming a circle and a set of lines connecting each of these arcs to represent their relationships.</p>
+
+                      <p>Ten MATLAB/Octave projects were selected based on pre-established criteria. The ten projects were imported from Github to the visualization environment and then the proposed strategy was applied to each project. Figure 18 shows the treemap visual metaphor of the matlab2tikz project. Each rectangle of this view represents the functions of source code files. All functions that are part of the same file are painted with the same color. The size of the rectangle varies according to the number of lines of code of the function.</p>
+
+                                <table>
+                                    <tbody>
+                                        <tr> 
+                                            <td align="center">
+                                                <a href="./octavekdm/images/treemapSize.png">
+                                                    <img src="./octavekdm/images/treemapSize.png" border="0" width="1030" height="472"/>
+                                                </a>
+				            </td>
+                 			</tr>
+                                    </tbody>
+                                </table>
+                                <center>Figure 18 - Treemap view of the MATLAB2Tikz project that represents the size of your functions and files</center><br>
+
+                      <p>The figures 19 and 20 too represents a treemap view of the matlab2tikz project. In this case, the rectangles represent the project's source code files. All rectangles are painted in the same color, and the size varies according to the amount of the file relationships. These relationships represent the coupling of the files. Figure 19 represents the afferent coupling of the file while the figure 20 represents the efferent coupling.</p>
+
+                                <table>
+                                    <tbody>
+                                        <tr> 
+                                            <td align="center">
+                                                <a href="./octavekdm/images/treemapCalled.png">
+                                                    <img src="./octavekdm/images/treemapCalled.png" border="0" width="1030" height="472"/>
+                                                </a>
+				            </td>
+                 			</tr>
+                                    </tbody>
+                                </table>
+                                <center>Figure 19 - Treemap view of the MATLAB2Tikz project that represents the Number of the Files Relationships</center><br>
+                                <table>
+                                    <tbody>
+                                        <tr> 
+                                            <td align="center">
+                                                <a href="./octavekdm/images/treemapCall.png">
+                                                    <img src="./octavekdm/images/treemapCall.png" border="0" width="1029" height="471"/>
+                                                </a>
+				            </td>
+                 			</tr>
+                                    </tbody>
+                                </table>
+                                <center>Figure 20 - Treemap view of the MATLAB2Tikz project that represents the Number of Files Dependencies</center><br>
+
+                      <p>The figures 21 and 22 show the chord view of the matlab2tikz project. The figure 21 show the files of the matlab2tikz project and it's afferents relationships. The figure 22 show the files of the matlab2tikz project and it's efferents relationships</p>
+
+                                <table>
+                                    <tbody>
+                                        <tr> 
+                                            <td align="center">
+                                                <a href="./octavekdm/images/chordCalled.png">
+                                                    <img src="./octavekdm/images/chordCalled.png" border="0" width="849" height="731"/>
+                                                </a>
+				            </td>
+                 			</tr>
+                                    </tbody>
+                                </table>
+                                <center>Figure 21 - Chord view of the MATLAB2Tikz project that represents the Number of the Afferents Coupling</center><br>
+                                <table>
+                                    <tbody>
+                                        <tr> 
+                                            <td align="center">
+                                                <a href="./octavekdm/images/chordCall.png">
+                                                    <img src="./octavekdm/images/chordCall.png" border="0" width="911" height="729"/>
+                                                </a>
+				            </td>
+                 			</tr>
+                                    </tbody>
+                                </table>
+                                <center>Figure 22 - Chord view of the MATLAB2Tikz project that represents the Number of Efferents Coupling</center><br>
+
+                      <p>From phase 1 of the exploratory study the top five files in number of lines of code of each project and the five files with more functions were identified. In phase 2, the five files with the most afferent relations and the five files with the most efferent relations were identified. The intersection between the results of these two phases of the study corresponds to candidate files possessing God Class characteristics. Figures 23, 24, 25, 26, 27, 28, 29, 30, 31 and 32 show these results for each of the ten projects.</p>
+
+                                <table>
+                                    <tbody>
+                                        <tr> 
+                                            <td align="center">
+                                                <a href="./octavekdm/images/resultadoDeepLearnToolbox.png">
+                                                    <img src="./octavekdm/images/resultadoDeepLearnToolbox.png" border="0" width="542" height="267"/>
+                                                </a>
+				            </td>
+                 			</tr>
+                                    </tbody>
+                                </table>
+                                <center>Figure 23 - Analysis of the DeeplearnToolbox project</center><br>
+                                <table>
+                                    <tbody>
+                                        <tr> 
+                                            <td align="center">
+                                                <a href="./octavekdm/images/resultadoExport_fig-master.png">
+                                                    <img src="./octavekdm/images/resultadoExport_fig-master.png" border="0" width="534" height="254"/>
+                                                </a>
+				            </td>
+                 			</tr>
+                                    </tbody>
+                                </table>
+                                <center>Figure 24 - Analysis of the Export_fig-master project</center><br>
+                                <table>
+                                    <tbody>
+                                        <tr> 
+                                            <td align="center">
+                                                <a href="./octavekdm/images/resultadoFieldtrip-master.png">
+                                                    <img src="./octavekdm/images/resultadoFieldtrip-master.png" border="0" width="584" height="270"/>
+                                                </a>
+				            </td>
+                 			</tr>
+                                    </tbody>
+                                </table>
+                                <center>Figure 25 - Analysis of the Fieldtrip-master project</center><br>
+                                <table>
+                                    <tbody>
+                                        <tr> 
+                                            <td align="center">
+                                                <a href="./octavekdm/images/resultadoHDR_Toolbox-master.png">
+                                                    <img src="./octavekdm/images/resultadoHDR_Toolbox-master.png" border="0" width="585" height="270"/>
+                                                </a>
+				            </td>
+                 			</tr>
+                                    </tbody>
+                                </table>
+                                <center>Figure 26 - Analysis of the HDR_Toolbox-master project</center><br>
+                                <table>
+                                    <tbody>
+                                        <tr> 
+                                            <td align="center">
+                                                <a href="./octavekdm/images/resultadoRobotics-toolbox-matlab-master.png">
+                                                    <img src="./octavekdm/images/resultadoRobotics-toolbox-matlab-master.png" border="0" width="648" height="272"/>
+                                                </a>
+				            </td>
+                 			</tr>
+                                    </tbody>
+                                </table>
+                                <center>Figure 27 - Analysis of the Robotics-toolbox-matlab-master project</center><br>
+                                <table>
+                                    <tbody>
+                                        <tr> 
+                                            <td align="center">
+                                                <a href="./octavekdm/images/resultadoGpstuff-master.png">
+                                                    <img src="./octavekdm/images/resultadoGpstuff-master.png" border="0" width="653" height="270"/>
+                                                </a>
+				            </td>
+                 			</tr>
+                                    </tbody>
+                                </table>
+                                <center>Figure 28 - Analysis of the Gpstuff-master project</center><br>
+                                <table>
+                                    <tbody>
+                                        <tr> 
+                                            <td align="center">
+                                                <a href="./octavekdm/images/resultadoMATLAB-Online-master.png">
+                                                    <img src="./octavekdm/images/resultadoMATLAB-Online-master.png" border="0" width="475" height="270"/>
+                                                </a>
+				            </td>
+                 			</tr>
+                                    </tbody>
+                                </table>
+                                <center>Figure 29 - Analysis of the MATLAB-Online-master project</center><br>
+                                <table>
+                                    <tbody>
+                                        <tr> 
+                                            <td align="center">
+                                                <a href="./octavekdm/images/resultadoMatlab2tikz-master.png">
+                                                    <img src="./octavekdm/images/resultadoMatlab2tikz-master.png" border="0" width="495" height="270"/>
+                                                </a>
+				            </td>
+                 			</tr>
+                                    </tbody>
+                                </table>
+                                <center>Figure 30 - Analysis of the Matlab2tikz-master project</center><br>
+                                <table>
+                                    <tbody>
+                                        <tr> 
+                                            <td align="center">
+                                                <a href="./octavekdm/images/resultadoOctave-networks-toolbox-master.png">
+                                                    <img src="./octavekdm/images/resultadoOctave-networks-toolbox-master.png" border="0" width="695" height="270"/>
+                                                </a>
+				            </td>
+                 			</tr>
+                                    </tbody>
+                                </table>
+                                <center>Figure 31 - Analysis of the Octave-networks-toolbox-master project</center><br>
+                                <table>
+                                    <tbody>
+                                        <tr> 
+                                            <td align="center">
+                                                <a href="./octavekdm/images/resultadoPmtk3-master.png">
+                                                    <img src="./octavekdm/images/resultadoPmtk3-master.png" border="0" width="763" height="272"/>
+                                                </a>
+				            </td>
+                 			</tr>
+                                    </tbody>
+                                </table>
+                                <center>Figure 32 - Analysis of the Pmtk3-master project</center><br>
+               
+               
+                				
+		  </div>
+		</div>
+		<div id="footer" class="clear">
+			<p class="left">Copyright &copy; 2010 <a herf="http://sourceminer.sourceforge.net">http://sourceminer.sourceforge.net</a></p>
+			<p class="right">Design by <a href="http://www.spyka.net/">Free CSS Templates</a> and <a href="http://www.justfreetemplates.com/">Free Web Templates</a></p>
+		</div>
+	</div>
+
+<div style="font-size: 0.8em; text-align: center;">
+<br />
+Design downloaded from Zeroweb.org: <a href="http://www.zeroweb.org/">Free website templates, layouts, and tools.</a><br />
+<br />
+</div>
+<!-- Piwik -->
+<script type="text/javascript">
+var pkBaseURL = (("https:" == document.location.protocol) ? "https://sourceforge.net/apps/piwik/sourceminer/" : "http://sourceforge.net/apps/piwik/sourceminer/");
+document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
+</script><script type="text/javascript">
+try {
+var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 1);
+piwikTracker.trackPageView();
+piwikTracker.enableLinkTracking();
+} catch( err ) {}
+</script><noscript><p><img src="http://sourceforge.net/apps/piwik/sourceminer/piwik.php?idsite=1" style="border:0" alt=""/></p></noscript>
+<!-- End Piwik Tag -->
+</body>
+
+<!-- Mirrored from www.sourceminer.org/experimentalStudies.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 13 Nov 2014 13:57:25 GMT -->
+</html>
