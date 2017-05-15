@@ -5,7 +5,7 @@ body {
 	font-family:Verdana, Geneva, sans-serif;
 	font-size:14px;
 	color:#333;
-	background:#fff url('../images/body-bg.jpg') repeat-x;
+	background:#fff url('body-bg.jpg') repeat-x;
 }
 * {
 	margin:0;
@@ -157,7 +157,7 @@ div#header {
 	padding:50px 0 40px;
 	margin:0 auto;
 	height:75px;
-	background:transparent url('../images/header-bg.jpg') no-repeat;
+	background:transparent url('header-bg.jpg') no-repeat;
 }
 div#header h2 {
 	color:#ffffff;
@@ -181,15 +181,15 @@ div#header div.tagline a {
 /** body **/
 div#body {
 	padding:10px 0;
-	background:#fff url('../images/content-bg.html') repeat-x scroll top left;
+	background:#fff url('content-bg.html') repeat-x scroll top left;
 }
 
 
 /** content+sidebar styles **/
 div#content {
-	width:900px;
+	width:100%;
 }
-div.column-left {
+/*div.column-left {
 	float:left;
 	margin-right:20px;
 }
@@ -235,7 +235,7 @@ div#sidebar li ul.blocklist li.selected-item  {
 div#sidebar li ul.blocklist li.selected-item a {
 	color:#fff;
 	font-weight:bold;
-	background:transparent url('../images/item-selected.jpg') no-repeat;
+	background:transparent url('item-selected.jpg') no-repeat;
 }
 div#sidebar li ul.blocklist li.selected-item a:hover {
 	text-decoration:none;
@@ -256,7 +256,7 @@ div#sidebar h4 {
 	margin:0;
 	padding:7px 10px;
 }
-
+*/
 
 /** footer **/
 div#footer {
